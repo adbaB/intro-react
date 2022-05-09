@@ -5,6 +5,7 @@ import { TodoSearch } from "../todoSearch";
 import { TodoList } from "../todoList";
 import { TodoItem } from "../todoItem";
 import { CreateTodoButton } from "../createTodoButtom";
+import { Modal } from "../modal";
 export const AppUI = () => {
   const { 
      error,
@@ -36,7 +37,9 @@ export const AppUI = () => {
           />
         ))}
       </TodoList>
-
+            <Modal>
+                <p>NOS JUIMOS</p>
+            </Modal>
       <CreateTodoButton />
     </>
   );
