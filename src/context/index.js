@@ -14,6 +14,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
     
       //state
       const [searchValue, setSearchValue] = useState("");
+      const [openModal,setOpenModal] = useState(false)
     
       //functions
       const completedTodos = todos.filter((todo) => todo.completed).length;
@@ -36,8 +37,13 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
         const newTodos = [...todos];
         newTodos[indexTodo].completed = !newTodos[indexTodo].completed;
         saveTodo(newTodos);
-      };
+      }; 
+      const addTodo = (text) => {
     
+        const newTodos = [...todos];
+        newTodos.push({text,completed:false})
+        saveTodo(newTodos);
+      };
       const deleteTodo = (text) => {
         const indexTodo = todos.findIndex((todo) => todo.text === text);
         const newTodos = [...todos];
@@ -57,6 +63,9 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
             searchedTodos,
             completeTodo,
             deleteTodo,
+            addTodo,
+            openModal,
+            setOpenModal
 
           }}>
               {props.children}

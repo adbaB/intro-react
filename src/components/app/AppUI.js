@@ -6,14 +6,17 @@ import { TodoList } from "../todoList";
 import { TodoItem } from "../todoItem";
 import { CreateTodoButton } from "../createTodoButtom";
 import { Modal } from "../modal";
+import { TodoForm } from "../todoForm";
 export const AppUI = () => {
-  const { 
-     error,
-     loading, 
-     searchedTodos, 
-     completeTodo, 
-     deleteTodo 
-    } = useContext(TodoContext);
+  const {
+    error,
+    loading,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+  } = useContext(TodoContext);
   return (
     <>
       <TodoCounter />
@@ -37,10 +40,12 @@ export const AppUI = () => {
           />
         ))}
       </TodoList>
-            <Modal>
-                <p>NOS JUIMOS</p>
-            </Modal>
-      <CreateTodoButton />
+      {openModal && (
+        <Modal>
+          <TodoForm/>
+        </Modal>
+      )}
+      <CreateTodoButton  setOpenModal={setOpenModal}  />
     </>
   );
 };
